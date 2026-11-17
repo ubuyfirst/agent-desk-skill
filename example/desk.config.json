@@ -3,6 +3,7 @@
   "owner": "you",
   "command": "/desk",
   "today": "2026-03-11",
+  "profile": { "user_type": "student", "project_types": ["capstone", "assignment", "club site", "side app", "lab reading"], "notes": "" },
   "stages": ["Intake", "Prototype", "Review", "Hand off", "Build", "Done"],
   "closeout_stage": "Hand off",
   "areas": ["School", "Club", "Side projects", "Research"],

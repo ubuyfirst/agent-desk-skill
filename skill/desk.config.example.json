@@ -3,6 +3,12 @@
   "owner": "you",
   "command": "/desk",
 
+  "profile": {
+    "user_type": "student",
+    "project_types": ["capstone", "assignment", "club site"],
+    "notes": ""
+  },
+
   "stages": ["Intake", "Prototype", "Review", "Hand off", "Build", "Done"],
   "stage_short": {},
   "closeout_stage": "Hand off",
@@ -21,11 +27,18 @@
     "feature_pattern": "^\\s*feat[(:!]"
   },
 
+  "lifecycle": {
+    "status_file_names": ["STATUS.md"],
+    "kickoffs_glob": "projects/*/NEXT-SESSION-PROMPT*.md",
+    "sessions_table": "sessions.md",
+    "session_end": "a SessionEnd hook drops a marker; no close step yet"
+  },
+
   "sources": [
     { "kind": "local", "path": "projects/", "read": "each project folder's STATUS.md or README, its newest decision docs, and git log since the last read" },
     { "kind": "github", "repos": ["your-name/your-repo"], "read": "open pull requests, reviews requested from me, issues assigned to me" },
-    { "kind": "tracker", "name": "Linear, Jira, Trello, Notion or similar", "via": "the tracker's MCP server", "read": "tasks assigned to me and comments since the last read" },
-    { "kind": "calendar", "via": "a calendar MCP server", "read": "the next five days" }
+    { "kind": "tracker", "name": "Linear, Jira, Trello, Notion or similar", "via": "the tracker's MCP server", "access": "read-only by policy", "read": "tasks assigned to me and comments since the last read" },
+    { "kind": "calendar", "via": "a calendar MCP server", "access": "read", "read": "the next five days" }
   ],
 
   "_notes": {
@@ -35,7 +48,9 @@
     "tracker_label": "The word shown before a task id on a project page, like Task, Card or Issue.",
     "page": "Where index.html is written, relative to the data folder. Record hrefs are relative to this page.",
     "github": "Used only by refresh.js. repos like [\"your-name/your-repo\"]; people maps a GitHub login to a first name, like {\"octo-login\": \"Sam\"}. Delete it, or leave repos empty, if you have no GitHub. refresh.js --offline also skips it.",
-    "sources": "Read by the agent, not by the scripts. Delete the ones you do not use. Every read is read-only.",
+    "profile": "Optional, set by setup. user_type: student, instructor, founder / lead / PM, solo developer, researcher or client work. project_types: the kinds of project you run. notes: one line the agent keeps in mind.",
+    "lifecycle": "Optional, set by setup. status_file_names: where a project's status block lives. kickoffs_glob: resume prompts, the newest is where a project left off. sessions_table: a table of sessions, read for activity. session_end: one line on what your end-of-session hook or close step writes.",
+    "sources": "Read by the agent, not by the scripts. Delete the ones you do not use. Every read is read-only. kind: local, github, tracker, calendar, mail, meetings, board or goals. via: the MCP server's name. access: read, read-only by policy, or not authorized (setup fills it).",
     "today": "Optional, YYYY-MM-DD: freezes the page's idea of today (the example uses it so its ages never drift)."
   }
 }

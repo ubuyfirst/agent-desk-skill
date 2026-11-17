@@ -53,9 +53,9 @@ Then open `example/index.html` in a browser. Click a project in the left rail, t
 
 `disable-model-invocation: true` in `SKILL.md` is a Claude Code setting: it means the skill runs only when you call it. Other harnesses ignore it. If your harness takes `/desk` as an unknown command, type "run the desk" instead.
 
-**3. Copy the scripts.** Copy the `desk/` folder (with `render.js` and `refresh.js`) to your project root. Your data will live next to the scripts, in `desk/`.
+**3. Copy the scripts.** Copy the `desk/` folder (with `render.js`, `refresh.js` and `scan.js`) to your project root. Your data will live next to the scripts, in `desk/`.
 
-**4. Run it.** Type `/desk`. On the first run the agent asks for your stages, your areas and where your work lives, then writes `desk/desk.config.json` and does the first read. It ends by opening `desk/index.html`.
+**4. Run it.** Type `/desk`. The first run is setup (below): the agent looks around, sends you one message of guesses, writes `desk/desk.config.json` from your reply and does the first read. It ends by opening `desk/index.html`.
 
 **5. Keep your data out of git.** The data names people and what they wait for. Add these lines to your `.gitignore`:
 
@@ -66,7 +66,22 @@ desk/answers/
 desk/backlog.json
 desk/index.html
 desk/*.log
+desk/scan.json
+desk/scan.md
+desk/SETUP-NOTES.md
 ```
+
+## First run: setup
+
+The first `/desk` (or `/desk setup` any time later) learns your setup instead of asking you to fill in a form.
+
+1. **It scans.** `node desk/scan.js` lists what your harness has: the agent (Claude Code, Codex, Cursor and others), its skills, agents, hooks and MCP servers; your session pieces, like an end-of-session hook, a sessions table or resume prompts; your project folders, status files, boards, goals and decision sheets; your git repos. It records names, counts and paths only. It never records tokens, environment values or full commands, and it opens no network connection.
+2. **It reads a few files** (the top block only) and checks which sources it can actually reach right now.
+3. **It writes `desk/SETUP-NOTES.md`:** what it found, what it thinks you are (a student, a lead, a solo developer…), how the desk will read your work, and a few suggestions it will not act on without your yes.
+4. **It sends one message** of at most ten numbered guesses, each with a default. You fix any by number in one reply, or say "go". There is no second round.
+5. **It writes a light config** and does the first read.
+
+Setup only reads. It writes nothing outside `desk/`, and the scan and the notes stay on your machine (they are in the `.gitignore` lines above). To see what it produces, look at `example/harness/` (a made-up project) and `example/harness-scan/` (its scan, notes, steering message and the config that came out).
 
 ## Every day
 
@@ -114,9 +129,11 @@ The data shapes (a project record, the board's rows, the answers block) are in `
 ## What's in the folder
 
 ```
-skill/      SKILL.md (the modes), CONTRACT.md (the data), desk.config.example.json
-desk/       render.js (draws the page), refresh.js (no-model morning refresh)
+skill/      SKILL.md (the modes), SETUP.md (the first run), CONTRACT.md (the data), desk.config.example.json
+desk/       render.js (draws the page), refresh.js (no-model morning refresh), scan.js (the read-only setup scan)
 example/    a made-up student's desk; render it with --data example
+  harness/        a made-up project for the setup scan
+  harness-scan/   what setup produced for it: scan.json, scan.md, SETUP-NOTES.md, the steering message, the config
 schedule/   Windows, macOS, Linux and Claude Code morning-run examples
 ```
 

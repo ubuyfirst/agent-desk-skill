@@ -1,0 +1,6 @@
+{
+  "mcpServers": {
+    "trello": { "type": "stdio", "command": "npx", "args": ["-y", "example-trello-mcp"] },
+    "school-calendar": { "type": "http", "url": "https://calendar.example.edu/mcp" }
+  }
+}

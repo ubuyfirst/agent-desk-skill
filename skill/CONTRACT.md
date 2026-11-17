@@ -21,8 +21,25 @@ What the data looks like and what each answer does. The skill (`SKILL.md`) says 
 | `backlog.json` | things you dumped in the backlog box, once filed |
 | `answers/` | your pasted answer blocks, verbatim |
 | `index.html` · `refresh.log` | the page and the morning log |
+| `scan.json` · `scan.md` | what `scan.js` found in your harness at setup (names, counts and paths; no secrets) |
+| `SETUP-NOTES.md` | the agent's reading of your setup: what it found, what it thinks you are, how it will read your work, suggestions |
 
-The data names people and what they wait for. Keep it local: it should not go in git.
+The data names people and what they wait for, and the setup files describe your harness. Keep them local: they should not go in git.
+
+## desk.config.json
+
+Every key is optional; `render.js` has a default for each. Setup writes only the keys it has a value for.
+
+| Key | What |
+|---|---|
+| `title` `owner` `command` | the page title, your name as it appears in `on` fields (default `you`), the command the page tells you to type |
+| `profile` | `user_type`, `project_types` (a list), `notes` (one line): who setup thinks you are; read by the agent only |
+| `stages` `stage_short` `closeout_stage` | the ladder, optional short labels for narrow screens, the "one step from done" stage |
+| `areas` `labels` | the rail's groups; section titles and the words for area and subarea |
+| `max_active` `date_style` `tracker_label` `page` `today` | the active cap; `m/d`, `d/m` or `iso`; the word before a task id; where the page is written; a frozen today for demos |
+| `github` | `repos`, `people` (login to first name), `feature_pattern`: used by `refresh.js` only |
+| `lifecycle` | `status_file_names`, `kickoffs_glob`, `sessions_table`, `session_end`: where status, "where it left off" and activity come from |
+| `sources` | a list; each has `kind` (`local` `github` `tracker` `calendar` `mail` `meetings` `board` `goals`), plus `path`, `repos` or `via`, `access` (`read`, `read-only by policy`, `not authorized`) and `read` (what to read) |
 
 ## Stages
 

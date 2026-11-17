@@ -1,0 +1,270 @@
+{
+  "scanner": "desk/scan.js",
+  "version": 1,
+  "scanned_at": "2026-11-17 15:37",
+  "root": ".",
+  "root_name": "harness",
+  "home_scanned": false,
+  "platform": "win32",
+  "harness": {
+    "detected": [
+      "claude-code"
+    ],
+    "markers": {
+      "claude_dir": ".claude",
+      "mcp_json": ".mcp.json"
+    },
+    "workspaces": [],
+    "instructions": [
+      {
+        "path": "CLAUDE.md",
+        "kind": "claude",
+        "lines": 15,
+        "headings": [
+          "# CLAUDE.md",
+          "## How I work",
+          "## Sources"
+        ]
+      }
+    ],
+    "cursor_rules": [],
+    "settings_files": [
+      {
+        "path": ".claude/settings.json",
+        "scope": "project",
+        "parsed": true
+      }
+    ],
+    "skill_links": {}
+  },
+  "skills": [
+    {
+      "name": "session-gate",
+      "scope": "project",
+      "store": ".claude/skills",
+      "path": ".claude/skills/session-gate",
+      "via_link": false,
+      "description": "Runs on the first message of every chat. Names the chat, then appends one row (time, title, project, stage) to sessions.md.",
+      "manual_only": false
+    },
+    {
+      "name": "study-notes",
+      "scope": "project",
+      "store": ".claude/skills",
+      "path": ".claude/skills/study-notes",
+      "via_link": false,
+      "description": "Turns a lecture's slides and my notes into a one-page study sheet in the course folder.",
+      "manual_only": false
+    }
+  ],
+  "skill_packs": [],
+  "agents": [],
+  "commands": [],
+  "hooks": [
+    {
+      "event": "SessionEnd",
+      "scope": "project",
+      "file": ".claude/settings.json",
+      "matcher": null,
+      "script": "session-end-marker.js"
+    }
+  ],
+  "hook_events": {
+    "SessionEnd": 1
+  },
+  "permissions": {
+    "allow": 2,
+    "deny": 3,
+    "ask": 0,
+    "mcp_servers_with_denied_tools": {
+      "trello": 3
+    },
+    "mcp_servers_allowed": {
+      "school-calendar": 1
+    }
+  },
+  "plugins": [],
+  "mcp_servers": [
+    {
+      "name": "trello",
+      "type": "stdio",
+      "scope": "project",
+      "file": ".mcp.json",
+      "category": "tracker",
+      "disabled": false,
+      "write_tools_denied": 3
+    },
+    {
+      "name": "school-calendar",
+      "type": "http",
+      "scope": "project",
+      "file": ".mcp.json",
+      "category": "calendar",
+      "disabled": false
+    }
+  ],
+  "memory": [],
+  "lifecycle": {
+    "session_end_hooks": [
+      {
+        "event": "SessionEnd",
+        "script": "session-end-marker.js",
+        "scope": "project"
+      }
+    ],
+    "session_start_hooks": [],
+    "session_gate_candidates": [
+      "session-gate"
+    ],
+    "close_step_candidates": [],
+    "sessions_tables": 1,
+    "kickoffs": 3,
+    "memory_files": 0
+  },
+  "projects": [
+    {
+      "path": "projects/capstone-study-rooms",
+      "markers": [
+        "decision sheet",
+        "kickoff",
+        "status file"
+      ],
+      "title": "Capstone: study-room finder",
+      "status_file": "STATUS.md",
+      "status": {
+        "stage": "Prototype",
+        "updated": "2026-03-10",
+        "due": null
+      },
+      "kickoffs": 1,
+      "decision_sheets": 1,
+      "newest": "2026-11-17"
+    },
+    {
+      "path": "projects/ds-assignment-4",
+      "markers": [
+        "kickoff",
+        "status file"
+      ],
+      "title": "Data structures: assignment 4",
+      "status_file": "STATUS.md",
+      "status": {
+        "stage": "Assignment",
+        "updated": null,
+        "due": "2026-03-14"
+      },
+      "kickoffs": 1,
+      "decision_sheets": 0,
+      "newest": "2026-11-17"
+    },
+    {
+      "path": "projects/robotics-club-site",
+      "markers": [
+        "kickoff",
+        "status file"
+      ],
+      "title": "Robotics club site",
+      "status_file": "STATUS.md",
+      "status": {
+        "stage": "Hand off",
+        "updated": "2026-03-10",
+        "due": null
+      },
+      "kickoffs": 1,
+      "decision_sheets": 0,
+      "newest": "2026-11-17"
+    }
+  ],
+  "org": {
+    "boards": [],
+    "sessions_tables": [
+      {
+        "path": "sessions.md",
+        "rows": 3,
+        "columns": [
+          "When",
+          "Title",
+          "Project",
+          "Stage"
+        ],
+        "dated": "2026-11-17"
+      }
+    ],
+    "ledgers": [],
+    "kickoffs": [
+      {
+        "path": "projects/capstone-study-rooms/NEXT-SESSION-PROMPT.md",
+        "dated": "2026-11-17"
+      },
+      {
+        "path": "projects/ds-assignment-4/NEXT-SESSION-PROMPT.md",
+        "dated": "2026-11-17"
+      },
+      {
+        "path": "projects/robotics-club-site/NEXT-SESSION-PROMPT.md",
+        "dated": "2026-11-17"
+      }
+    ],
+    "decision_sheets": {
+      "count": 1,
+      "sample": [
+        "projects/capstone-study-rooms/decisions.md"
+      ]
+    },
+    "goals": [
+      "goals.md"
+    ],
+    "weekly": [],
+    "adr": [],
+    "glossary": [],
+    "open_items": {
+      "count": 0,
+      "sample": []
+    },
+    "exchange": [],
+    "intake": [],
+    "contracts": []
+  },
+  "git": {
+    "repos": [],
+    "tools": {
+      "gh": true,
+      "git": true,
+      "node": "v22.14.0",
+      "claude": false,
+      "codex": false,
+      "cursor": true
+    }
+  },
+  "schedulers": null,
+  "cues": {
+    "user_type": {
+      "student": {
+        "hits": 2,
+        "examples": [
+          "projects/capstone-study-rooms",
+          "projects/ds-assignment-4"
+        ]
+      }
+    },
+    "stages_seen": {
+      "Prototype": 1,
+      "Assignment": 1,
+      "Hand off": 1
+    },
+    "project_type_words": {
+      "capstone": 1,
+      "assignment": 1,
+      "site": 1
+    }
+  },
+  "stats": {
+    "projects_total": 3,
+    "kickoffs_total": 3,
+    "dirs_walked": 6,
+    "entries_seen": 18,
+    "readme_reads": 0,
+    "ms": 48,
+    "truncated": []
+  }
+}

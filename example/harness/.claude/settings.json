@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "SessionEnd": [
+      { "hooks": [ { "type": "command", "command": "node tools/session-end-marker.js" } ] }
+    ]
+  },
+  "permissions": {
+    "allow": ["Bash(git log:*)", "mcp__school-calendar__list_events"],
+    "deny": ["mcp__trello__create_card", "mcp__trello__update_card", "mcp__trello__add_comment"]
+  }
+}

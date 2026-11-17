@@ -1,6 +1,6 @@
 ---
 name: desk
-description: Your project board as one local page (desk/index.html). It shows what waits on you, ranked, with a default on each; this week's two priorities; the active three; what is one step from done; and a page per project with "Resume in a new chat". Modes are fresh read (the default), resume <project>, answers (a pasted block that starts "/desk answers") and setup.
+description: Your project board as one local page (desk/index.html). It shows what waits on you, ranked, with a default on each; this week's two priorities; the active three; what is one step from done; and a page per project with "Resume in a new chat". Modes are fresh read (the default), resume <project>, answers (a pasted block that starts "/desk answers") and setup (the first run, or /desk setup: scan the harness, one steering message, then the first read).
 disable-model-invocation: true
 ---
 
@@ -14,7 +14,8 @@ You keep the user's desk: one local HTML page that tells them what waits on them
 |---|---|
 | The contract (record schema, desk.json keys, ranking, answers table) | `CONTRACT.md`, beside this file. Read it before you write any data. |
 | The user's settings (stages, areas, sources, page path) | `desk/desk.config.json` in the project. An example is `desk.config.example.json`, beside this file. |
-| The renderer and the no-model refresh | `desk/render.js`, `desk/refresh.js` |
+| The setup procedure | `SETUP.md`, beside this file |
+| The renderer, the no-model refresh and the setup scan | `desk/render.js`, `desk/refresh.js`, `desk/scan.js` |
 | The data | `desk/desk.json`, `desk/projects/<slug>.json`, `desk/backlog.json`, `desk/answers/`. It is local and private, so never commit it unless the user asks. |
 
 If the user keeps the scripts somewhere other than `desk/`, use that folder everywhere below and pass `--data <folder>`.
@@ -23,7 +24,7 @@ If the user keeps the scripts somewhere other than `desk/`, use that folder ever
 
 - The message is a block starting `/desk answers`: use **Answers**.
 - The message says `resume <project>`: use **Resume**.
-- `desk/desk.config.json` does not exist: use **Setup**, then **Fresh read**.
+- The message says `setup`, or `desk/desk.config.json` does not exist: use **Setup**, then **Fresh read**.
 - Anything else: use **Fresh read**.
 
 ## Rules for every mode
@@ -37,21 +38,14 @@ If the user keeps the scripts somewhere other than `desk/`, use that folder ever
 
 ## Setup
 
-1. Ask the user, in one message:
-   - their stages (offer the project ladder `Intake → Prototype → Review → Hand off → Build → Done` or the course ladder `Reading → Assignment → Draft → Feedback → Submitted`);
-   - their areas (for example School, Club, Side projects, Work);
-   - where their work lives: local folders, GitHub repos, a tracker (Linear, Jira, Trello, Notion, ClickUp or anything else they reach through an MCP server), a calendar. Check which MCP tools you actually have and say which sources you can and cannot read.
-2. Write `desk/desk.config.json` from `desk.config.example.json`, using their answers.
-3. Create `desk/desk.json` with every key from the contract, set to empty, and an empty `desk/projects/` folder.
-4. Suggest these lines for their `.gitignore`: `desk/desk.json`, `desk/projects/`, `desk/answers/`, `desk/backlog.json`, `desk/index.html`, `desk/*.log`.
-5. Go on to Fresh read.
+Follow `SETUP.md`, beside this file. In short: run `node desk/scan.js --schedulers` (read-only), check which sources you can actually reach, sample a few files, write `desk/SETUP-NOTES.md`, then send **one** message of at most ten numbered guesses with a default on each. On the reply (fixes by number, or "go"), write a light `desk/desk.config.json`, create an empty `desk/desk.json` and `desk/projects/`, suggest the `.gitignore` lines, and go on to Fresh read. Never a second round of questions.
 
 ## Fresh read
 
 1. Get the time from the shell: `date "+%Y-%m-%d %H:%M"` (PowerShell: `Get-Date -Format "yyyy-MM-dd HH:mm"`).
 2. Read `desk/desk.config.json`, `desk/desk.json` and every record in `desk/projects/`.
 3. Read every source in the config's `sources`, read-only. If your harness has subagents, run one per source in parallel and have each return short facts with where each fact came from.
-   - `local`: each project folder's status file (STATUS.md or README), its newest decision docs, and `git log` since the last read.
+   - `local`: each project folder's status file (the config's `lifecycle.status_file_names`, else STATUS.md or README), its newest decision docs, and `git log` since the last read. If the config has `lifecycle`, the newest file matching `kickoffs_glob` is where the project left off, and the rows of `sessions_table` since the last read are its activity.
    - `github`: `gh pr list` and `gh pr view` on the listed repos, and issues assigned to the user.
    - `tracker`: through whatever MCP server the user has, read tasks assigned to them, and comments or questions since the last read.
    - `calendar`: the next five days.

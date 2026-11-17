@@ -1,0 +1,27 @@
+{
+  "title": "The desk",
+  "owner": "you",
+  "profile": {
+    "user_type": "student",
+    "project_types": ["capstone", "assignment", "club site"],
+    "notes": "The club site is club work; the other two are school."
+  },
+  "stages": ["Reading", "Assignment", "Draft", "Feedback", "Submitted"],
+  "closeout_stage": "Feedback",
+  "areas": ["School", "Club"],
+  "max_active": 3,
+  "date_style": "m/d",
+  "tracker_label": "Card",
+  "lifecycle": {
+    "status_file_names": ["STATUS.md"],
+    "kickoffs_glob": "projects/*/NEXT-SESSION-PROMPT*.md",
+    "sessions_table": "sessions.md",
+    "session_end": "a SessionEnd hook (session-end-marker.js) drops a marker; nothing reads it yet"
+  },
+  "sources": [
+    { "kind": "local", "path": "projects/", "read": "each STATUS.md's first block, NEXT-SESSION-PROMPT.md, decisions.md" },
+    { "kind": "goals", "path": "goals.md", "read": "G1 to G3, on a new week" },
+    { "kind": "tracker", "name": "Trello", "via": "trello", "access": "read-only by policy", "read": "cards assigned to me and comments since the last read" },
+    { "kind": "calendar", "via": "school-calendar", "access": "read", "read": "the next five days" }
+  ]
+}
