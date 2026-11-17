@@ -1,0 +1,19 @@
+{
+  "title": "The desk",
+  "owner": "you",
+  "command": "/desk",
+  "today": "2026-03-11",
+  "stages": ["Intake", "Prototype", "Review", "Hand off", "Build", "Done"],
+  "closeout_stage": "Hand off",
+  "areas": ["School", "Club", "Side projects", "Research"],
+  "max_active": 3,
+  "date_style": "m/d",
+  "tracker_label": "Card",
+  "labels": { "area": "Area", "subarea": "Topic" },
+  "github": { "repos": [], "people": {} },
+  "sources": [
+    { "kind": "local", "path": "projects/", "read": "each project's STATUS.md and its newest decision doc" },
+    { "kind": "github", "repos": ["example-student/study-room-finder", "example-student/budget-tracker"], "read": "open pull requests and issues assigned to me" },
+    { "kind": "calendar", "via": "calendar MCP", "read": "the next five days" }
+  ]
+}

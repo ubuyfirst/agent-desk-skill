@@ -1,0 +1,9 @@
+# Logs from refresh.js and the morning run
+*.log
+# If you keep your own desk inside this folder, keep its data out of git
+desk/desk.json
+desk/desk.config.json
+desk/projects/
+desk/answers/
+desk/backlog.json
+desk/index.html

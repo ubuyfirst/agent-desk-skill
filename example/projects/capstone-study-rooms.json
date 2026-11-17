@@ -1,0 +1,66 @@
+{
+  "slug": "capstone-study-rooms",
+  "name": "Capstone: study-room finder",
+  "area": "School",
+  "subarea": "Capstone",
+  "initiative": "Spring team project",
+  "scope": "A web app that shows which campus study rooms are free right now and links out to book one. Three of us, one semester.",
+  "goal": "A working demo at the midterm, a pilot with ten classmates by the final.",
+  "milestone": { "what": "Midterm demo to Prof. Kim", "due": "2026-03-17", "on": "you", "note": "The demo needs the room screen, so the map-or-list decision comes first." },
+  "stage": "Review",
+  "state": "active",
+  "stage_evidence": "prototype v2 built 3/9; decision doc open with two questions",
+  "priority": "urgent",
+  "priority_why": "Two teammates are blocked now and the demo is within 7 days.",
+  "opened": "2026-01-20",
+  "last_activity": "2026-03-10",
+  "people": ["Sam", "Maya", "Prof. Kim"],
+  "folder": "projects/capstone/",
+  "task": { "id": "CAP-14", "name": "Room screen", "url": null },
+  "parts": [
+    { "name": "Room data", "stage": "Build", "on": "Maya", "note": "Import from the library's CSV works; live updates later." },
+    { "name": "Room screen", "stage": "Review", "on": "you", "note": "Prototype v2 waits on your map-or-list decision." },
+    { "name": "Booking link-out", "stage": "Prototype", "on": "Sam", "note": "Opens the booking page with the room filled in." }
+  ],
+  "stands": [
+    "Prototype v2 shows both layouts side by side so the team can compare.",
+    "Maya's room import is merged; the data is a week old but fine for the demo.",
+    "Sam is idle on the screen until the layout is picked."
+  ],
+  "who_has": "You, for the decision. Then Sam and Maya build.",
+  "asking": [
+    { "who": "Sam", "what": "asked which layout to build first", "since": "2026-03-06" },
+    { "who": "Prof. Kim", "what": "asked where the room data will come from after the demo", "since": "2026-03-04" }
+  ],
+  "calls": [
+    { "lead": "Capstone · room screen · Sam and Maya are blocked on it", "call": "Does the room screen open on a campus map or a sorted list?", "default": "List first; the map comes in sprint 3.", "since": "2026-03-06", "doc": "docs/capstone-decisions.md" },
+    { "lead": "Capstone · room data · the advisor asked about it", "call": "After the demo, do we ask the library for a daily export, or read the booking site ourselves?", "default": "Ask the library first; reading the site is the fallback.", "since": "2026-03-04", "doc": "docs/capstone-decisions.md" }
+  ],
+  "closeout": [
+    { "what": "Sprint 2 notes for the team channel", "kind": "post", "to": "the team channel", "since": "2026-03-10", "file": "projects/capstone/sprint-2-notes.md" }
+  ],
+  "pending": ["Dark-mode switch Sam added: keep it or pull it before the demo?"],
+  "changed": ["Maya's room import merged 3/6.", "Prototype v2 built 3/9 with both layouts."],
+  "review": [
+    { "label": "Prototype v2", "kind": "prototype", "href": "docs/capstone-prototype-v2.html", "version": "v2", "dated": "2026-03-09", "note": "Both layouts side by side. Pick one." },
+    { "label": "Decision doc", "kind": "decisions", "href": "docs/capstone-decisions.md", "version": null, "dated": "2026-03-09", "note": "Two decisions, each with a default." }
+  ],
+  "links": {
+    "repo": "https://github.com/example-student/study-room-finder",
+    "branch": "proto-v2",
+    "next_doc": { "label": "Decision doc", "href": "docs/capstone-decisions.md" },
+    "other": [ { "label": "Course syllabus", "href": "docs/capstone-decisions.md#dates" } ]
+  },
+  "resume": {
+    "minutes": "20",
+    "steps": [
+      "Open prototype v2 and the decision doc.",
+      "Make the two decisions (or take the defaults).",
+      "Post the sprint 2 notes so Sam and Maya can start.",
+      "Rehearse the demo once."
+    ],
+    "open": [ { "label": "Open prototype v2", "href": "docs/capstone-prototype-v2.html" } ],
+    "kickoff": "Resume the capstone (study-room finder). Read projects/capstone/STATUS.md and docs/capstone-decisions.md. On your first turn, before anything else, give me: where it stands in five lines, the decisions I owe in order with the default on each, and what changed since 3/6. The thing I need to review is prototype v2 at docs/capstone-prototype-v2.html: open it for me. Then draft the sprint 2 notes for the team channel and show them to me before posting."
+  },
+  "sources": ["projects/capstone/STATUS.md", "GitHub example-student/study-room-finder", "calendar"]
+}

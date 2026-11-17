@@ -1,0 +1,64 @@
+{
+  "read_at": "2026-03-11 07:45",
+  "note": "Example desk. Every person, repo and project here is made up. Read from the projects/ folders, GitHub and the calendar.",
+  "today": [
+    { "when": "Wed 3/11 14:00", "what": "Capstone stand-up", "who": "Sam, Maya" },
+    { "when": "Thu 3/12 10:00", "what": "TA office hours: assignment 4 questions", "who": "Nina" },
+    { "when": "Fri 3/13 23:59", "what": "Assignment 4 due on the course site", "who": "you" },
+    { "when": "Tue 3/17 11:00", "what": "Capstone midterm demo", "who": "Prof. Kim" }
+  ],
+  "week_two_week": "Mon 3/9 to Fri 3/13",
+  "week_start": "2026-03-09",
+  "week_note": "Proposed Monday from the deadlines; you said yes.",
+  "week_two": [
+    { "slug": "capstone-study-rooms", "project": "Capstone: study-room finder", "why": "The demo is Tuesday and two teammates are blocked on one decision of yours.", "status": "partly", "status_note": "Prototype v2 is built. Your map-or-list decision is the blocker." },
+    { "slug": "ds-assignment-4", "project": "Data Structures: assignment 4", "why": "Due Friday night.", "status": "started", "status_note": "Plan written, insert and lookup pass; delete and resize are left." }
+  ],
+  "week_two_last": {
+    "week": "Mon 3/2 to Fri 3/6",
+    "set": "2026-03-02",
+    "items": [
+      { "slug": "robotics-club-site", "project": "Robotics club website", "was": "Finish the events page and hand the site to Ben.", "status": "done, to hand off", "worked": "Events page built, launch checklist written, admin accounts made.", "left": "Send the hand-off email and get Ben's sign-off on the events copy." },
+      { "slug": "budget-app", "project": "Budget tracker app", "was": "Write the CSV export spec so Theo can build it.", "status": "handed off", "worked": "Spec written and talked through; Theo opened a pull request on Thursday.", "left": "Review his pull request." }
+    ]
+  },
+  "week_status_scale": ["not started", "started", "partly", "done, to hand off", "handed off", "completed"],
+  "active": [
+    { "slug": "capstone-study-rooms", "project": "Capstone: study-room finder", "next": "Decide map or list first, then rehearse the demo." },
+    { "slug": "ds-assignment-4", "project": "Data Structures: assignment 4", "next": "Write delete and resize, then run the provided tests." },
+    { "slug": "robotics-club-site", "project": "Robotics club website", "next": "Send Ben the hand-off email." }
+  ],
+  "active_note": "Three is the cap. A fourth one waits until one of these is handed off.",
+  "waiting": [
+    { "id": "W1", "slug": "capstone-study-rooms", "project": "Capstone: study-room finder", "what": "Decide whether the room screen opens on a map or a sorted list", "who": "Sam and Maya: they can't start the screen until you pick", "since": "2026-03-06", "default": "List first; the map comes in sprint 3.", "default_ok": true },
+    { "id": "W2", "slug": "robotics-club-site", "project": "Robotics club website", "what": "Sign off the events page copy so Ben can launch", "who": "Ben, who wants to launch before the open day", "since": "2026-03-08", "default": "Launch with the current copy and fix typos after.", "default_ok": true },
+    { "id": "W3", "slug": "ds-assignment-4", "project": "Data Structures: assignment 4", "what": "Answer Nina: may your test file be shared with the class as an example?", "who": "Nina (TA)", "since": "2026-03-09", "default": "Yes, with your name removed.", "default_ok": true },
+    { "id": "W4", "slug": "budget-app", "project": "Budget tracker app", "what": "Review Theo's pull request: CSV export", "who": "Theo", "since": "2026-03-05", "default": "Nothing happens until you review; there is no safe default.", "default_ok": false, "pr": { "repo": "example-student/budget-tracker", "number": 12, "state": "OPEN", "updatedAt": "2026-03-10T18:02:00Z" } }
+  ],
+  "check": [
+    { "id": "C1", "title": "Capstone demo date disagrees", "text": "The syllabus says the midterm demo is Tue 3/17; the team board says Thu 3/19. The milestone uses 3/17 until you say which is right." }
+  ],
+  "out": [
+    { "slug": "budget-app", "project": "Budget tracker app", "who": "Theo is building the CSV export", "last": "pushed a fix 3/10", "prs": [ { "repo": "example-student/budget-tracker", "number": 12, "state": "OPEN", "updatedAt": "2026-03-10T18:02:00Z" } ] }
+  ],
+  "new_work": {
+    "window": "since 3/4",
+    "items": [
+      { "id": "N1", "who": "Sam", "what": "added a dark-mode switch to the capstone prototype (it was not in the sprint plan)" }
+    ]
+  },
+  "park": [
+    { "id": "P1", "slug": "lab-reading-list", "project": "Research lab reading list", "waiting": "Nothing has moved since you listed the first five papers. The next step is yours: pick the first two.", "since": "2026-02-23" }
+  ],
+  "auto": {
+    "refreshed_at": "2026-03-11 05:30",
+    "features": {
+      "window": "since 2026-03-04",
+      "merged_total": 3,
+      "by_author": {
+        "Sam": [ { "title": "feat: dark mode switch", "mergedAt": "2026-03-09T21:14:00Z", "url": "https://github.com/example-student/study-room-finder/pull/7", "repo": "study-room-finder" } ],
+        "Maya": [ { "title": "feat: import room list from CSV", "mergedAt": "2026-03-06T16:40:00Z", "url": "https://github.com/example-student/study-room-finder/pull/5", "repo": "study-room-finder" } ]
+      }
+    }
+  }
+}

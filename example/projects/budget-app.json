@@ -1,0 +1,42 @@
+{
+  "slug": "budget-app",
+  "name": "Budget tracker app",
+  "area": "Side projects",
+  "subarea": "Apps",
+  "initiative": null,
+  "scope": "A small phone-friendly web app to log spending and see the month at a glance.",
+  "goal": "Something you and two friends actually use every week.",
+  "milestone": { "what": "CSV export merged", "due": "2026-03-20", "on": "Theo", "note": "Built from your spec." },
+  "stage": "Build",
+  "state": "out of your hands",
+  "stage_evidence": "pull request #12 open since 3/5",
+  "priority": "normal",
+  "priority_why": "Nobody is blocked except on your review.",
+  "opened": "2026-01-05",
+  "last_activity": "2026-03-10",
+  "people": ["Theo"],
+  "folder": "projects/budget-app/",
+  "task": null,
+  "parts": [
+    { "name": "CSV export", "stage": "Build", "on": "Theo", "note": "Pull request #12." },
+    { "name": "Monthly chart", "stage": "Done", "on": "you", "note": "Shipped in January." }
+  ],
+  "stands": ["Theo built the export from your spec.", "His pull request waits on your review.", "Nothing else is open."],
+  "who_has": "Theo, until you review.",
+  "asking": [ { "who": "Theo", "what": "asked for a review of the CSV export", "since": "2026-03-05" } ],
+  "calls": [],
+  "closeout": [],
+  "pending": [],
+  "changed": ["Theo pushed a fix on 3/10."],
+  "review": [
+    { "label": "Pull request #12", "kind": "pull request", "href": "https://github.com/example-student/budget-tracker/pull/12", "version": null, "dated": "2026-03-10", "note": "CSV export." }
+  ],
+  "links": { "repo": "https://github.com/example-student/budget-tracker", "branch": "csv-export", "next_doc": null },
+  "resume": {
+    "minutes": "15",
+    "steps": ["Open the pull request.", "Try the export on your own data.", "Approve or ask for changes."],
+    "open": [],
+    "kickoff": "Resume the budget tracker. Read projects/budget-app/STATUS.md and pull request #12 in example-student/budget-tracker. On your first turn, give me what the pull request changes in five lines and anything that does not match the spec. Then draft my review comment and show it to me; do not post it."
+  },
+  "sources": ["GitHub example-student/budget-tracker"]
+}

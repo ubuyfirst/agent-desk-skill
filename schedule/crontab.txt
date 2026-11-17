@@ -1,0 +1,9 @@
+# Linux (or macOS) cron: the morning desk at 06:30, Monday to Friday.
+# Add with `crontab -e`. Change the path. cron has no PATH to speak of, so name the folders that hold node and claude.
+# On Linux, opening the page needs your desktop session: DISPLAY (X11) or WAYLAND_DISPLAY must be set, or use --no-show.
+
+PATH=/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin:$HOME/.local/bin
+30 6 * * 1-5  /bin/bash "$HOME/your-project/schedule/desk-morning.sh" "$HOME/your-project"
+
+# No agent, just the no-model refresh (pull request states and ages), every morning:
+# 30 6 * * *  node "$HOME/your-project/desk/refresh.js" --data "$HOME/your-project/desk"

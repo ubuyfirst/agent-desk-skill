@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Study-room finder: prototype v2</title>
+<style>
+  :root { color-scheme: light dark; --ink: #1c1915; --muted: #645d52; --line: #e2dacd; --paper: #f7f3ec; --card: #fff; --free: #2e9e6b; --busy: #b3261e; }
+  @media (prefers-color-scheme: dark) { :root { --ink: #f3efe6; --muted: #b7ad9e; --line: #3a342c; --paper: #171512; --card: #23201a; } }
+  body { margin: 0; padding: 1rem; font: 1rem/1.45 system-ui, sans-serif; color: var(--ink); background: var(--paper); }
+  h1 { font-size: 1.3rem; } p { color: var(--muted); }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; } @media (max-width: 700px) { .two { grid-template-columns: 1fr; } }
+  .phone { border: 1px solid var(--line); border-radius: 1rem; background: var(--card); padding: 1rem; }
+  .row { display: flex; justify-content: space-between; padding: .5rem 0; border-bottom: 1px solid var(--line); }
+  .free { color: var(--free); font-weight: 600; } .busy { color: var(--busy); }
+  .map { position: relative; height: 16rem; border-radius: .6rem; background: repeating-linear-gradient(45deg, var(--paper), var(--paper) 10px, var(--line) 10px, var(--line) 11px); }
+  .pin { position: absolute; width: .9rem; height: .9rem; border-radius: 50%; background: var(--free); border: 2px solid var(--card); }
+  .pin.b { background: var(--busy); }
+</style></head>
+<body>
+<h1>Study-room finder: prototype v2</h1>
+<p>Example artifact. Two layouts for the same screen. Pick one in the decision doc.</p>
+<div class="two">
+  <div class="phone"><h2>A. Sorted list</h2>
+    <div class="row"><span>Library 2.04</span><span class="free">free · 2 min walk</span></div>
+    <div class="row"><span>Science 1.12</span><span class="free">free · 5 min walk</span></div>
+    <div class="row"><span>Library 3.01</span><span class="busy">busy until 15:00</span></div>
+    <div class="row"><span>Union 0.08</span><span class="free">free · 9 min walk</span></div>
+  </div>
+  <div class="phone"><h2>B. Campus map</h2>
+    <div class="map"><span class="pin" style="left:20%;top:30%"></span><span class="pin" style="left:55%;top:45%"></span><span class="pin b" style="left:35%;top:70%"></span><span class="pin" style="left:75%;top:20%"></span></div>
+  </div>
+</div>
+</body></html>

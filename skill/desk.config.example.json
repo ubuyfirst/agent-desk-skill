@@ -1,0 +1,41 @@
+{
+  "title": "The desk",
+  "owner": "you",
+  "command": "/desk",
+
+  "stages": ["Intake", "Prototype", "Review", "Hand off", "Build", "Done"],
+  "stage_short": {},
+  "closeout_stage": "Hand off",
+
+  "areas": ["School", "Club", "Side projects", "Work"],
+  "labels": { "area": "Area", "subarea": "Topic" },
+
+  "max_active": 3,
+  "date_style": "m/d",
+  "tracker_label": "Task",
+  "page": "index.html",
+
+  "github": {
+    "repos": [],
+    "people": {},
+    "feature_pattern": "^\\s*feat[(:!]"
+  },
+
+  "sources": [
+    { "kind": "local", "path": "projects/", "read": "each project folder's STATUS.md or README, its newest decision docs, and git log since the last read" },
+    { "kind": "github", "repos": ["your-name/your-repo"], "read": "open pull requests, reviews requested from me, issues assigned to me" },
+    { "kind": "tracker", "name": "Linear, Jira, Trello, Notion or similar", "via": "the tracker's MCP server", "read": "tasks assigned to me and comments since the last read" },
+    { "kind": "calendar", "via": "a calendar MCP server", "read": "the next five days" }
+  ],
+
+  "_notes": {
+    "stages": "Any ladder, any length. A course ladder: [\"Reading\", \"Assignment\", \"Draft\", \"Feedback\", \"Submitted\"]",
+    "closeout_stage": "The stage that means one step from done; those projects sort first in Close out and hand off.",
+    "date_style": "m/d, d/m or iso",
+    "tracker_label": "The word shown before a task id on a project page, like Task, Card or Issue.",
+    "page": "Where index.html is written, relative to the data folder. Record hrefs are relative to this page.",
+    "github": "Used only by refresh.js. repos like [\"your-name/your-repo\"]; people maps a GitHub login to a first name, like {\"octo-login\": \"Sam\"}. Delete it, or leave repos empty, if you have no GitHub. refresh.js --offline also skips it.",
+    "sources": "Read by the agent, not by the scripts. Delete the ones you do not use. Every read is read-only.",
+    "today": "Optional, YYYY-MM-DD: freezes the page's idea of today (the example uses it so its ages never drift)."
+  }
+}

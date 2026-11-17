@@ -1,0 +1,53 @@
+{
+  "slug": "ds-assignment-4",
+  "name": "Data Structures: assignment 4",
+  "area": "School",
+  "subarea": "Coursework",
+  "initiative": "Hash maps",
+  "scope": "Build a hash map with insert, lookup, delete and resize, plus a short write-up on collisions.",
+  "goal": "All provided tests pass and the write-up fits on one page.",
+  "milestone": { "what": "Submit on the course site", "due": "2026-03-13", "on": "you", "note": "Late penalty is 10% a day." },
+  "stage": "Prototype",
+  "state": "active",
+  "stage_evidence": "insert and lookup pass the tests; delete and resize not written",
+  "priority": "high",
+  "priority_why": "Due within the week.",
+  "opened": "2026-03-02",
+  "last_activity": "2026-03-10",
+  "people": ["Nina (TA)"],
+  "folder": "projects/ds-assignment-4/",
+  "task": null,
+  "parts": [
+    { "name": "Insert and lookup", "stage": "Done", "on": "you", "note": "Tests pass." },
+    { "name": "Delete and resize", "stage": "Prototype", "on": "you", "note": "Next up." },
+    { "name": "Collision write-up", "stage": "Intake", "on": "you", "note": "Outline only." }
+  ],
+  "stands": [
+    "Half the tests pass.",
+    "The collision approach is still open, and it changes how delete works.",
+    "Nina asked to share your test file as a class example."
+  ],
+  "who_has": "You.",
+  "asking": [ { "who": "Nina", "what": "asked to share your test file with the class", "since": "2026-03-09" } ],
+  "calls": [
+    { "lead": "Coursework · assignment 4 · decides how delete works", "call": "Chaining or open addressing for collisions?", "default": "Chaining: the lecture notes use it and the tests expect it.", "since": "2026-03-08", "doc": "docs/assignment-4-plan.md" }
+  ],
+  "closeout": [],
+  "pending": [],
+  "changed": ["Insert and lookup pass as of 3/10."],
+  "review": [
+    { "label": "Assignment plan", "kind": "plan", "href": "docs/assignment-4-plan.md", "version": null, "dated": "2026-03-08", "note": "One decision at the top." }
+  ],
+  "links": {
+    "repo": "https://github.com/example-student/ds-assignment-4",
+    "branch": null,
+    "next_doc": { "label": "Assignment plan", "href": "docs/assignment-4-plan.md" }
+  },
+  "resume": {
+    "minutes": "90",
+    "steps": ["Take the collision decision.", "Write delete, then resize.", "Run the tests.", "Write the one-page note."],
+    "open": [],
+    "kickoff": "Resume assignment 4 (hash maps). Read projects/ds-assignment-4/STATUS.md and docs/assignment-4-plan.md. On your first turn, give me: which tests pass and fail, the one decision I owe with its default, and the order to finish in before Friday 23:59. Do not write the code for me; quiz me on delete first."
+  },
+  "sources": ["projects/ds-assignment-4/STATUS.md", "course site calendar"]
+}

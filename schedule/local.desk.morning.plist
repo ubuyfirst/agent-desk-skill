@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  macOS launchd: the morning desk at 06:30 every day.
+  1. Replace /Users/YOUR-NAME/your-project (three places) with your project folder.
+  2. Copy this file to ~/Library/LaunchAgents/local.desk.morning.plist
+  3. Load it:  launchctl load ~/Library/LaunchAgents/local.desk.morning.plist
+  Test now:    launchctl start local.desk.morning
+  A Mac that was asleep at 06:30 runs the job when it wakes.
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>local.desk.morning</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/YOUR-NAME/your-project/schedule/desk-morning.sh</string>
+    <string>/Users/YOUR-NAME/your-project</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key><string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+  </dict>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key><integer>6</integer>
+    <key>Minute</key><integer>30</integer>
+  </dict>
+  <key>StandardErrorPath</key><string>/Users/YOUR-NAME/your-project/desk/launchd.err.log</string>
+</dict>
+</plist>

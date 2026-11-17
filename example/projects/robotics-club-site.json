@@ -1,0 +1,48 @@
+{
+  "slug": "robotics-club-site",
+  "name": "Robotics club website",
+  "area": "Club",
+  "subarea": "Website",
+  "initiative": "Open day",
+  "scope": "Replace the old one-page site with home, events, team and join pages the club can edit without you.",
+  "goal": "Live before the open day, and Ben can run it on his own.",
+  "milestone": { "what": "Hand the site to Ben", "due": "2026-03-14", "on": "you", "note": "Everything is built; only the hand-off is left." },
+  "stage": "Hand off",
+  "state": "active",
+  "stage_evidence": "all four pages built; hand-off email drafted, not sent",
+  "priority": "high",
+  "priority_why": "Ben has waited three days for the sign-off.",
+  "opened": "2026-02-01",
+  "last_activity": "2026-03-08",
+  "people": ["Ben"],
+  "folder": "projects/robotics-club-site/",
+  "task": null,
+  "parts": [
+    { "name": "Pages", "stage": "Done", "on": "you", "note": "Home, events, team, join." },
+    { "name": "Hand-off to Ben", "stage": "Hand off", "on": "you", "note": "Email drafted; checklist written." }
+  ],
+  "stands": ["All four pages are built.", "The launch checklist is written.", "The hand-off email is drafted but not sent."],
+  "who_has": "You, for the hand-off. Then Ben.",
+  "asking": [ { "who": "Ben", "what": "asked when he can launch", "since": "2026-03-08" } ],
+  "calls": [
+    { "lead": "Club site · events page · Ben wants to launch before the open day", "call": "Is the events page copy good enough to launch?", "default": "Launch with the current copy and fix typos after.", "since": "2026-03-08", "doc": "docs/club-site-launch-checklist.md" }
+  ],
+  "closeout": [
+    { "what": "Hand-off email with the launch checklist and the admin login", "kind": "send", "to": "Ben", "since": "2026-03-08", "file": "docs/club-site-launch-checklist.md", "href": "docs/club-site-launch-checklist.md" },
+    { "what": "Post the new site link in the club chat", "kind": "post", "to": "the club chat", "since": "2026-03-08", "file": null },
+    { "what": "Ben signs off the events page", "kind": "sign-off", "to": "Ben", "since": "2026-03-08", "file": null }
+  ],
+  "pending": [],
+  "changed": [],
+  "review": [
+    { "label": "Launch checklist", "kind": "checklist", "href": "docs/club-site-launch-checklist.md", "version": null, "dated": "2026-03-07", "note": "What Ben needs to run the site alone." }
+  ],
+  "links": { "repo": "https://github.com/example-student/robotics-club-site", "branch": "main", "next_doc": { "label": "Launch checklist", "href": "docs/club-site-launch-checklist.md" } },
+  "resume": {
+    "minutes": "10",
+    "steps": ["Read the checklist once.", "Say yes or no on the events copy.", "Send the email (the agent shows it first)."],
+    "open": [],
+    "kickoff": "Resume the robotics club website. Read projects/robotics-club-site/STATUS.md and docs/club-site-launch-checklist.md. On your first turn, give me the one decision I owe with its default, then show me the hand-off email to Ben. Wait for me to say \"send it\"."
+  },
+  "sources": ["projects/robotics-club-site/STATUS.md"]
+}
