@@ -38,6 +38,7 @@ Every key is optional; `render.js` has a default for each. Setup writes only the
 | `areas` `labels` | the rail's groups; section titles and the words for area and subarea |
 | `max_active` `date_style` `tracker_label` `page` `today` | the active cap; `m/d`, `d/m` or `iso`; the word before a task id; where the page is written; a frozen today for demos |
 | `github` | `repos`, `people` (login to first name), `feature_pattern`: used by `refresh.js` only |
+| `scrub` | `names`: people, clients or products `scrub.js` should flag before you share; it also checks `github.people`, your computer's user name and your git identity |
 | `lifecycle` | `status_file_names`, `kickoffs_glob`, `sessions_table`, `session_end`: where status, "where it left off" and activity come from |
 | `sources` | a list; each has `kind` (`local` `github` `tracker` `calendar` `mail` `meetings` `board` `goals`), plus `path`, `repos` or `via`, `access` (`read`, `read-only by policy`, `not authorized`) and `read` (what to read) |
 

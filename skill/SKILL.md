@@ -1,6 +1,6 @@
 ---
 name: desk
-description: Your project board as one local page (desk/index.html). It shows what waits on you, ranked, with a default on each; this week's two priorities; the active three; what is one step from done; and a page per project with "Resume in a new chat". Modes are fresh read (the default), resume <project>, answers (a pasted block that starts "/desk answers") and setup (the first run, or /desk setup: scan the harness, one steering message, then the first read).
+description: Your project board as one local page (desk/index.html). It shows what waits on you, ranked, with a default on each; this week's two priorities; the active three; what is one step from done; and a page per project with "Resume in a new chat". Modes are fresh read (the default), resume <project>, answers (a pasted block that starts "/desk answers"), setup (the first run, or /desk setup: scan the harness, one steering message, then the first read) and scrub (check a folder for keys and personal details before you share it).
 disable-model-invocation: true
 ---
 
@@ -15,7 +15,7 @@ You keep the user's desk: one local HTML page that tells them what waits on them
 | The contract (record schema, desk.json keys, ranking, answers table) | `CONTRACT.md`, beside this file. Read it before you write any data. |
 | The user's settings (stages, areas, sources, page path) | `desk/desk.config.json` in the project. An example is `desk.config.example.json`, beside this file. |
 | The setup procedure | `SETUP.md`, beside this file |
-| The renderer, the no-model refresh and the setup scan | `desk/render.js`, `desk/refresh.js`, `desk/scan.js` |
+| The renderer, the no-model refresh, the setup scan and the privacy scrub | `desk/render.js`, `desk/refresh.js`, `desk/scan.js`, `desk/scrub.js` |
 | The data | `desk/desk.json`, `desk/projects/<slug>.json`, `desk/backlog.json`, `desk/answers/`. It is local and private, so never commit it unless the user asks. |
 
 If the user keeps the scripts somewhere other than `desk/`, use that folder everywhere below and pass `--data <folder>`.
@@ -25,6 +25,7 @@ If the user keeps the scripts somewhere other than `desk/`, use that folder ever
 - The message is a block starting `/desk answers`: use **Answers**.
 - The message says `resume <project>`: use **Resume**.
 - The message says `setup`, or `desk/desk.config.json` does not exist: use **Setup**, then **Fresh read**.
+- The message says `scrub` (optionally with a path): use **Scrub**.
 - Anything else: use **Fresh read**.
 
 ## Rules for every mode
@@ -35,6 +36,18 @@ If the user keeps the scripts somewhere other than `desk/`, use that folder ever
 4. **Write only inside the data folder.** In Answers mode you may also write into the project's own folder, for example notes or a decision log.
 5. **Keep ids and dates stable.** A row or decision that is still true keeps its `id` and its `since`. A new row gets the next free id.
 6. **Name every source.** Each row comes from somewhere you can point to: a file, a pull request, a task or an event. If a source fails, say which one in `desk.json`'s `note` and carry on.
+7. **Scrub before anything leaves the machine.** Before the user commits, pushes or shares a folder that holds desk output, notes or anything you wrote from their sources, run Scrub on it and show the result first.
+
+## Scrub
+
+Run `node desk/scrub.js <folder>` (read-only, no network). It flags keys and tokens (high), email addresses, phone numbers, home paths, the user's computer and git names, the names in `scrub.names` and `github.people`, and desk data that git tracks (medium). Then:
+
+1. Show the findings grouped by file, high first. Never repeat a full secret; the script already masks them.
+2. For each one, propose the fix: remove it, replace it with a placeholder (`you@example.com`, `~/project`, a made-up first name), move it to an ignored file, or `git rm --cached` for tracked desk data. A key that was ever committed or pushed must be revoked and replaced, not only deleted; say so.
+3. Make the fixes only on the user's word. A finding they have checked and accept goes in `.scrubignore` (`path-glob:regex`).
+4. Re-run until it exits 0, and say so. If a secret is already in git history, say that removing it from the latest commit does not remove it from history.
+
+During Setup, offer to add the people setup found (owners in boards, assignees) to `scrub.names`, so the scrub knows them.
 
 ## Setup
 

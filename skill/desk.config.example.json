@@ -27,6 +27,10 @@
     "feature_pattern": "^\\s*feat[(:!]"
   },
 
+  "scrub": {
+    "names": []
+  },
+
   "lifecycle": {
     "status_file_names": ["STATUS.md"],
     "kickoffs_glob": "projects/*/NEXT-SESSION-PROMPT*.md",

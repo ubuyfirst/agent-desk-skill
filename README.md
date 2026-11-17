@@ -91,6 +91,23 @@ Setup only reads. It writes nothing outside `desk/`, and the scan and the notes 
 | To pick a project back up | `/desk resume capstone`, or press **Resume in a new chat** on its page |
 | To answer what waits on you | Tick and type on the page, press **Copy my answers**, paste the block into the chat |
 | Just new ages and pull request states, with no agent | `node desk/refresh.js` (add `--offline` without GitHub) |
+| To check a folder before you share or push it | `/desk scrub`, or `node desk/scrub.js path/to/folder` |
+
+## Before you share: scrub
+
+Your desk names people, and your harness holds keys. Before you push or share anything the agent wrote (or this skill, once you have changed it), run:
+
+```bash
+node desk/scrub.js path/to/folder --names my-names.txt
+```
+
+It only reads, and it opens no network connection. It flags:
+
+- **High:** API keys and tokens (GitHub, cloud, AI providers, chat apps, payment providers), private keys, signed tokens, passwords written into settings or links. They are masked in the output.
+- **Medium:** email addresses, phone numbers, home-folder paths (they show your user name), your computer's user name and name, your git name and email, the names in your list, in `scrub.names` and in `github.people`, and desk data that git tracks.
+- **Low** (with `--all`): IP addresses, files too big to read.
+
+Images and PDFs are checked for names and emails left in their metadata. It exits 1 when there is something to look at, so you can put it in a pre-push hook. If you've checked a finding and accept it, add it to `.scrubignore` as `path-glob:regex`. If a key was ever pushed, revoke it and make a new one: deleting it doesn't remove it from git history. Keep `my-names.txt` outside the folder you scan.
 
 ## Make it run every morning
 
@@ -130,7 +147,7 @@ The data shapes (a project record, the board's rows, the answers block) are in `
 
 ```
 skill/      SKILL.md (the modes), SETUP.md (the first run), CONTRACT.md (the data), desk.config.example.json
-desk/       render.js (draws the page), refresh.js (no-model morning refresh), scan.js (the read-only setup scan)
+desk/       render.js (draws the page), refresh.js (no-model morning refresh), scan.js (the read-only setup scan), scrub.js (the privacy check before you share)
 example/    a made-up student's desk; render it with --data example
   harness/        a made-up project for the setup scan
   harness-scan/   what setup produced for it: scan.json, scan.md, SETUP-NOTES.md, the steering message, the config
